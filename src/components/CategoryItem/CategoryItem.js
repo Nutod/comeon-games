@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 
-export default function CategoryItem({ name }) {
+function CategoryItem({ name }) {
   return (
     <div className="category item">
       <div className="content">
@@ -16,3 +16,5 @@ export default function CategoryItem({ name }) {
 CategoryItem.propTypes = {
   name: PropTypes.string.isRequired
 };
+
+export default memo(CategoryItem);
