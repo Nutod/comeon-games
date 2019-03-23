@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import Avatar from "../../components/assets/images/avatar/eric.jpg";
 
-export default function PlayerItem() {
+function PlayerItem() {
   return (
     <div className="player item">
       <img className="ui avatar image" src={Avatar} alt="avatar" />
@@ -16,3 +16,5 @@ export default function PlayerItem() {
     </div>
   );
 }
+
+export default memo(PlayerItem);
