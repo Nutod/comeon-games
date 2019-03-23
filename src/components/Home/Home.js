@@ -25,8 +25,6 @@ export default class Home extends Component {
   };
 
   render() {
-    console.log(data);
-
     return (
       <>
         <Header />
@@ -47,7 +45,6 @@ export default class Home extends Component {
             <div className="ui grid">
               <div className="twelve wide column">
                 <h3 className="ui dividing header">Games</h3>
-
                 <div className="ui relaxed divided game items links">
                   {this.state.games ? (
                     this.state.games.map(({ name, description, icon }) => (
@@ -65,11 +62,14 @@ export default class Home extends Component {
               </div>
               <div className="four wide column">
                 <h3 className="ui dividing header">Categories</h3>
-
                 <div className="ui selection animated list category items">
-                  <CategoryItem header="All" />
-                  <CategoryItem header="Video Slots" />
-                  <CategoryItem header="Machine Slots" />
+                  {this.state.categories ? (
+                    this.state.categories.map(({ name }) => (
+                      <CategoryItem key={name} name={name} />
+                    ))
+                  ) : (
+                    <p>Loading...</p>
+                  )}
                 </div>
               </div>
             </div>
