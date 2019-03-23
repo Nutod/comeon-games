@@ -55,6 +55,9 @@ export default class Home extends Component {
     }
   };
 
+  // TODO: Debounce this method
+  searchGames = ({ target }) => {};
+
   // TODO: Add svg loading animation
   render() {
     return (
@@ -72,7 +75,7 @@ export default class Home extends Component {
                   Log Out
                 </div>
               </div>
-              <Search />
+              <Search changed={this.searchGames} />
             </div>
             <div className="ui grid">
               <div className="twelve wide column">

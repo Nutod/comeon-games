@@ -8,11 +8,11 @@ const SearchWrapper = styled.div`
   } */
 `;
 
-export default function Search() {
+export default function Search({ changed }) {
   return (
     <SearchWrapper className="four wide column">
       <div className="search ui small icon input ">
-        <input type="text" placeholder="Search Game" />
+        <input type="text" onChange={changed} placeholder="Search Game" />
         <i className="search icon" />
       </div>
     </SearchWrapper>
