@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Header";
 import PlayerItem from "./PlayerItem";
 import styled from "styled-components";
+import Search from "./Search";
 
 const MainContainer = styled.div`
   background-color: #ffffff;
@@ -26,6 +27,7 @@ export default function Home() {
                 Log Out
               </div>
             </div>
+            <Search />
           </div>
           <div class="ui grid">
             <div class="twelve wide column">
@@ -33,23 +35,7 @@ export default function Home() {
 
               <div class="ui relaxed divided game items links">
                 {/* <!-- game item template --> */}
-                <div class="game item">
-                  <div class="ui small image">
-                    <img src="" alt="game-icon" />
-                  </div>
-                  <div class="content">
-                    <div class="header">
-                      <b class="name" />
-                    </div>
-                    <div class="description" />
-                    <div class="extra">
-                      <div class="play ui right floated secondary button inverted">
-                        Play
-                        <i class="right chevron icon" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                Game Item
                 {/* <!-- end game item template --> */}
               </div>
             </div>
