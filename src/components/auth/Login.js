@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Login() {
   return (
-    <div className="login" style={{ display: "block", marginTop: "50%" }}>
+    <div className="login" style={{ display: "block", paddingTop: "20%" }}>
       <div className="ui grid centered">
         <form>
           <div className="fields">
