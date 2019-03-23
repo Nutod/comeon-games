@@ -1,13 +1,15 @@
 import React, { Component, Suspense, lazy } from "react";
 import { Switch, Route } from "react-router-dom";
 import Home from "../components/Home/Home";
-import Logout from "../components/auth/Logout";
 
 const Login = lazy(() => {
   return import("../components/auth/Login");
 });
 
-// TODO: Add Suspense here
+const Logout = lazy(() => {
+  return import("../components/auth/Logout");
+});
+
 export default class Layout extends Component {
   render() {
     return (
@@ -15,7 +17,7 @@ export default class Layout extends Component {
         <Suspense fallback={() => <p>Loading...</p>}>
           <Route exact path="/" component={Home} />
           <Route path="/login" render={() => <Login />} />
-          <Route path="/logout" component={Logout} />
+          <Route path="/logout" render={() => <Logout />} />
         </Suspense>
       </Switch>
     );
