@@ -3,8 +3,8 @@ import styled from "styled-components";
 import Header from "../Header/Header";
 import PlayerItem from "../PlayerItem/PlayerItem";
 import Search from "../Search/Search";
-import GameItem from "../GameItem/GameItem";
 import CategoryItem from "../CategoryItem/CategoryItem";
+import GameList from "../GameList/GameList";
 
 const MainContainer = styled.div`
   background-color: #ffffff;
@@ -17,7 +17,9 @@ export default class Home extends Component {
   state = {
     games: null,
     categories: null,
-    error: null
+    filteredGames: null,
+    error: null,
+    searchString: ""
   };
 
   componentDidMount = () => {
@@ -40,23 +42,29 @@ export default class Home extends Component {
   getAllGames = async () => {
     const response = await fetch("http://localhost:3001/games");
     const games = await response.json();
-    this.setState({ games });
+    this.setState(() => ({ games }));
   };
 
   filterGames = (_, id) => {
     const games = [...this.state.games];
-    if (id === 0 && games.length !== 5) {
+    if (id === 0 && games.length <= 1) {
       this.getAllGames();
     } else {
       const newGames = games.filter(game => {
         return game.categoryIds.includes(id);
       });
-      this.setState({ games: newGames });
+      this.setState(() => ({ games: newGames }));
     }
   };
 
   // TODO: Debounce this method
-  searchGames = ({ target }) => {};
+  searchGames = ({ target }) => {
+    this.setState(() => ({ searchString: target.value }));
+    const filteredGames = this.state.games.filter(game =>
+      game.name.toLowerCase().includes(this.state.searchString.toLowerCase())
+    );
+    this.setState(() => ({ filteredGames }));
+  };
 
   // TODO: Add svg loading animation
   render() {
@@ -75,26 +83,13 @@ export default class Home extends Component {
                   Log Out
                 </div>
               </div>
-              <Search changed={this.searchGames} />
+              <Search
+                searchValue={this.state.searchString}
+                changed={this.searchGames}
+              />
             </div>
             <div className="ui grid">
-              <div className="twelve wide column">
-                <h3 className="ui dividing header">Games</h3>
-                <div className="ui relaxed divided game items links">
-                  {this.state.games ? (
-                    this.state.games.map(({ name, description, icon }) => (
-                      <GameItem
-                        key={name}
-                        name={name}
-                        description={description}
-                        icon={icon}
-                      />
-                    ))
-                  ) : (
-                    <p>Loading...</p>
-                  )}
-                </div>
-              </div>
+              <GameList games={this.state.games} />
               <div className="four wide column">
                 <h3 className="ui dividing header">Categories</h3>
                 <div className="ui selection animated list category items">
