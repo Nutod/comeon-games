@@ -1,10 +1,10 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
 
-function CategoryItem({ name }) {
+function CategoryItem({ name, click }) {
   return (
     <div className="category item">
-      <div className="content">
+      <div className="content" onClick={click}>
         <div className="header">
           <h4>{name && name}</h4>
         </div>

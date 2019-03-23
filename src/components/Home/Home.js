@@ -37,6 +37,24 @@ export default class Home extends Component {
     });
   };
 
+  getAllGames = async () => {
+    const response = await fetch("http://localhost:3001/games");
+    const games = await response.json();
+    this.setState({ games });
+  };
+
+  filterGames = (_, id) => {
+    const games = [...this.state.games];
+    if (id === 0 && games.length !== 5) {
+      this.getAllGames();
+    } else {
+      const newGames = games.filter(game => {
+        return game.categoryIds.includes(id);
+      });
+      this.setState({ games: newGames });
+    }
+  };
+
   // TODO: Add svg loading animation
   render() {
     return (
@@ -78,8 +96,12 @@ export default class Home extends Component {
                 <h3 className="ui dividing header">Categories</h3>
                 <div className="ui selection animated list category items">
                   {this.state.categories ? (
-                    this.state.categories.map(({ name }) => (
-                      <CategoryItem key={name} name={name} />
+                    this.state.categories.map(({ id, name }) => (
+                      <CategoryItem
+                        key={name}
+                        name={name}
+                        click={event => this.filterGames(event, id)}
+                      />
                     ))
                   ) : (
                     <p>Loading...</p>
