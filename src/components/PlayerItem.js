@@ -7,9 +7,11 @@ export default function PlayerItem() {
       <img class="ui avatar image" src={Avatar} alt="avatar" />
       <div class="content">
         <div class="header">
-          <b class="name" />
+          <b class="name">Eric Beard</b>
         </div>
-        <div class="description event" />
+        <div class="description event">
+          <p>I saw you won 500 SEK last time!</p>
+        </div>
       </div>
     </div>
   );
