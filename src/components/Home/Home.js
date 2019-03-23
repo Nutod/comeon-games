@@ -4,6 +4,7 @@ import PlayerItem from "../PlayerItem/PlayerItem";
 import styled from "styled-components";
 import Search from "../Search/Search";
 import GameItem from "../GameItem/GameItem";
+import CategoryItem from "../CategoryItem/CategoryItem";
 
 const MainContainer = styled.div`
   background-color: #ffffff;
@@ -45,29 +46,7 @@ export default function Home() {
               <h3 class="ui dividing header">Categories</h3>
 
               <div class="ui selection animated list category items">
-                {/* <!-- category item template --> */}
-                <div class="category item">
-                  <div class="content">
-                    <div class="header">
-                      <h4>All</h4>
-                    </div>
-                  </div>
-                </div>
-                <div class="category item">
-                  <div class="content">
-                    <div class="header">
-                      <h4>Video Slots</h4>
-                    </div>
-                  </div>
-                </div>
-                <div class="category item">
-                  <div class="content">
-                    <div class="header">
-                      <h4>Machine Slots</h4>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- end category item template --> */}
+                <CategoryItem header="All" />
               </div>
             </div>
           </div>
