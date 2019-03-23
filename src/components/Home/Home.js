@@ -16,13 +16,25 @@ const MainContainer = styled.div`
 export default class Home extends Component {
   state = {
     games: null,
-    categories: null
+    categories: null,
+    error: null
   };
 
-  componentDidMount = async () => {
-    const response = await fetch("http://localhost:3001/games");
-    const games = await response.json();
-    this.setState({ games });
+  componentDidMount = () => {
+    const urls = [
+      "http://localhost:3001/games",
+      "http://localhost:3001/categories"
+    ];
+
+    Promise.all(
+      urls.map(url =>
+        fetch(url)
+          .then(response => response.json())
+          .catch(error => this.setState({ error }))
+      )
+    ).then(([games, categories]) => {
+      this.setState({ games, categories });
+    });
   };
 
   render() {
