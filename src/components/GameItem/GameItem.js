@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 
-export default function GameItem({ name, description, icon }) {
+function GameItem({ name, description, icon }) {
   return (
     <div className="game item">
       <div className="ui small image">
@@ -30,3 +30,5 @@ GameItem.propTypes = {
   description: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired
 };
+
+export default memo(GameItem);
