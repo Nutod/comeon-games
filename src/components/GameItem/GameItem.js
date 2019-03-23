@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function GameItem({ name, description, icon }) {
   return (
@@ -23,3 +24,9 @@ export default function GameItem({ name, description, icon }) {
     </div>
   );
 }
+
+GameItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired
+};
