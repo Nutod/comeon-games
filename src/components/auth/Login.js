@@ -11,7 +11,6 @@ class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    // TODO: Add LocalStorage here
     this.isFormValid() &&
       fetch("http://localhost:3001/login", {
         method: "post",
