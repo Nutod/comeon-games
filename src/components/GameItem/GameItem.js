@@ -15,10 +15,7 @@ function GameItem({ name, description, icon, code }) {
           <p>{description}</p>
         </div>
         <div className="extra">
-          <div
-            className="play ui right floated secondary button inverted"
-            onClick={code}
-          >
+          <div className="play ui right floated secondary button inverted">
             Play
             <i className="right chevron icon" />
           </div>

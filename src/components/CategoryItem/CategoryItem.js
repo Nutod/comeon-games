@@ -14,7 +14,8 @@ function CategoryItem({ name, click }) {
 }
 
 CategoryItem.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  click: PropTypes.func.isRequired
 };
 
 export default memo(CategoryItem);

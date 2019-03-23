@@ -3,8 +3,8 @@ import styled from "styled-components";
 import Header from "../Header/Header";
 import PlayerItem from "../PlayerItem/PlayerItem";
 import Search from "../Search/Search";
-import CategoryItem from "../CategoryItem/CategoryItem";
 import GameList from "../GameList/GameList";
+import CategoryList from "../CategoryList/CategoryList";
 
 const MainContainer = styled.div`
   background-color: #ffffff;
@@ -81,22 +81,10 @@ export default class Home extends Component {
             </div>
             <div className="ui grid">
               <GameList games={this.state.games} />
-              <div className="four wide column">
-                <h3 className="ui dividing header">Categories</h3>
-                <div className="ui selection animated list category items">
-                  {this.state.categories ? (
-                    this.state.categories.map(({ id, name }) => (
-                      <CategoryItem
-                        key={name}
-                        name={name}
-                        click={event => this.filterGames(event, id)}
-                      />
-                    ))
-                  ) : (
-                    <p>Loading...</p>
-                  )}
-                </div>
-              </div>
+              <CategoryList
+                categories={this.state.categories}
+                filter={this.filterGames}
+              />
             </div>
           </div>
           <div className="ingame">

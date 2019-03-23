@@ -25,7 +25,10 @@ class Login extends Component {
         })
       })
         .then(response => response.json())
-        .then(data => this.props.history.replace("/"));
+        .then(data => {
+          this.props.history.replace("/");
+          localStorage.setItem("username", data);
+        });
   };
 
   isFormValid = () => {
