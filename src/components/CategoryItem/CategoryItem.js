@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 export default function CategoryItem({ header }) {
   return (
-    <div class="category item">
-      <div class="content">
-        <div class="header">
+    <div className="category item">
+      <div className="content">
+        <div className="header">
           <h4>{header.toUpperCase()}</h4>
         </div>
       </div>

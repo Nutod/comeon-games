@@ -3,15 +3,15 @@ import GameIcon from "../../components/assets/images/game-icon/starburst.jpg";
 
 export default function GameItem() {
   return (
-    <div class="game item">
-      <div class="ui small image">
+    <div className="game item">
+      <div className="ui small image">
         <img src={GameIcon} alt="game-icon" />
       </div>
-      <div class="content">
-        <div class="header">
-          <b class="name">Starburst</b>
+      <div className="content">
+        <div className="header">
+          <b className="name">Starburst</b>
         </div>
-        <div class="description">
+        <div className="description">
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure,
             eligendi voluptatibus reiciendis consequuntur, ipsa rem alias
@@ -19,10 +19,10 @@ export default function GameItem() {
             distinctio aliquam magnam quae recusandae numquam sapiente!
           </p>
         </div>
-        <div class="extra">
-          <div class="play ui right floated secondary button inverted">
+        <div className="extra">
+          <div className="play ui right floated secondary button inverted">
             Play
-            <i class="right chevron icon" />
+            <i className="right chevron icon" />
           </div>
         </div>
       </div>

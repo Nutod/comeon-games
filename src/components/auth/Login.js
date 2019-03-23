@@ -2,26 +2,26 @@ import React from "react";
 
 export default function Login() {
   return (
-    <div class="login" style={{ display: "block", marginTop: "50%" }}>
-      <div class="ui grid centered">
+    <div className="login" style={{ display: "block", marginTop: "50%" }}>
+      <div className="ui grid centered">
         <form>
-          <div class="fields">
-            <div class="required field">
-              <div class="ui icon input">
+          <div className="fields">
+            <div className="required field">
+              <div className="ui icon input">
                 <input type="text" name="username" placeholder="Username" />
-                <i class="user icon" />
+                <i className="user icon" />
               </div>
             </div>
-            <div class="required field">
-              <div class="ui icon input">
+            <div className="required field">
+              <div className="ui icon input">
                 <input type="password" name="password" placeholder="Password" />
-                <i class="lock icon" />
+                <i className="lock icon" />
               </div>
             </div>
-            <div class="field">
-              <div class="ui icon input">
+            <div className="field">
+              <div className="ui icon input">
                 <input type="submit" value="Login" />
-                <i class="right chevron icon" />
+                <i className="right chevron icon" />
               </div>
             </div>
           </div>

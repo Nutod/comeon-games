@@ -18,51 +18,51 @@ export default function Home() {
     <>
       <Header />
       <MainContainer>
-        <div class="casino">
-          <div class="ui grid centered">
-            <div class="twelve wide column">
-              <div class="ui list">
+        <div className="casino">
+          <div className="ui grid centered">
+            <div className="twelve wide column">
+              <div className="ui list">
                 <PlayerItem />
               </div>
-              <div class="logout ui left floated secondary button inverted">
-                <i class="left chevron icon" />
+              <div className="logout ui left floated secondary button inverted">
+                <i className="left chevron icon" />
                 Log Out
               </div>
             </div>
             <Search />
           </div>
-          <div class="ui grid">
-            <div class="twelve wide column">
-              <h3 class="ui dividing header">Games</h3>
+          <div className="ui grid">
+            <div className="twelve wide column">
+              <h3 className="ui dividing header">Games</h3>
 
-              <div class="ui relaxed divided game items links">
+              <div className="ui relaxed divided game items links">
                 <GameItem />
                 <GameItem />
                 <GameItem />
                 <GameItem />
               </div>
             </div>
-            <div class="four wide column">
-              <h3 class="ui dividing header">Categories</h3>
+            <div className="four wide column">
+              <h3 className="ui dividing header">Categories</h3>
 
-              <div class="ui selection animated list category items">
-                <CategoryItem header="All" />
+              <div className="ui selection animated list category items">
+                <CategoryItem header="20" />
               </div>
             </div>
           </div>
         </div>
-        <div class="ingame">
-          <div class="ui grid centered">
-            <div class="three wide column">
-              <div class="ui right floated secondary button inverted">
-                <i class="left chevron icon" />
+        <div className="ingame">
+          <div className="ui grid centered">
+            <div className="three wide column">
+              <div className="ui right floated secondary button inverted">
+                <i className="left chevron icon" />
                 Back
               </div>
             </div>
-            <div class="ten wide column">
+            <div className="ten wide column">
               <div id="game-launch" />
             </div>
-            <div class="three wide column" />
+            <div className="three wide column" />
           </div>
         </div>
       </MainContainer>
