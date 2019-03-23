@@ -1,5 +1,5 @@
 import React from "react";
-import Avatar from "../components/assets/images/avatar/eric.jpg";
+import Avatar from "../../components/assets/images/avatar/eric.jpg";
 
 export default function PlayerItem() {
   return (

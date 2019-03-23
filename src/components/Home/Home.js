@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "./Header";
-import PlayerItem from "./PlayerItem";
+import Header from "../Header/Header";
+import PlayerItem from "../PlayerItem/PlayerItem";
 import styled from "styled-components";
-import Search from "./Search";
-import GameItem from "./GameItem";
+import Search from "../Search/Search";
+import GameItem from "../GameItem/GameItem";
 
 const MainContainer = styled.div`
   background-color: #ffffff;

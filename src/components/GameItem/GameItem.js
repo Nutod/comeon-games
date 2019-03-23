@@ -1,5 +1,5 @@
 import React from "react";
-import GameIcon from "../components/assets/images/game-icon/starburst.jpg";
+import GameIcon from "../../components/assets/images/game-icon/starburst.jpg";
 
 export default function GameItem() {
   return (
