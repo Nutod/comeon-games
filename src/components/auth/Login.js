@@ -1,5 +1,22 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import styled from "styled-components";
+
+const Grid = styled.div`
+  height: 100%;
+  position: relative;
+`;
+
+const Column = styled.div`
+  max-width: 450px;
+  margin: 0 auto;
+  padding-top: 15%;
+`;
+
+const Error = styled.div`
+  color: #9f3a38 !important;
+  border-color: #9f3a38 !important;
+`;
 
 class Login extends Component {
   state = {
@@ -31,11 +48,13 @@ class Login extends Component {
   };
 
   isFormValid = () => {
+    console.log("Validating...");
     let errors = [];
     let error;
     if (this.isFormEmpty(this.state)) {
       error = { message: "Fill in all fields" };
       this.setState({ errors: errors.concat(error) });
+      console.log("Not Valid...");
       return false;
     } else {
       return true;
@@ -52,10 +71,13 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="login" style={{ display: "block", paddingTop: "20%" }}>
-        <div className="ui grid centered">
-          <form onSubmit={this.handleSubmit}>
-            <div className="fields">
+      <Grid className="ui middle aligned center aligned">
+        <Column>
+          <h2 className="ui image header">
+            <img src="assets/images/logo.png" alt="Logo" className="image" />
+          </h2>
+          <form className="ui large form" onSubmit={this.handleSubmit}>
+            <div className="ui stacked segment">
               <div className="required field">
                 <div className="ui icon input">
                   <input
@@ -80,19 +102,22 @@ class Login extends Component {
                   <i className="lock icon" />
                 </div>
               </div>
-              <div className="field">
-                <div className="ui icon input">
-                  <input type="submit" value="Login" />
-                  <i className="right chevron icon" />
-                </div>
-              </div>
+              <input
+                type="submit"
+                value="Login"
+                className="ui fluid large submit button"
+              />
             </div>
+
+            {this.state.errors.length > 0 && (
+              <Error className="ui message">
+                <h3>Something went wrong!</h3>
+                <p>{this.state.errors[0].message}</p>
+              </Error>
+            )}
           </form>
-          {this.state.errors.length > 0 && (
-            <h3 style={{ color: "#fff" }}>Something went wrong</h3>
-          )}
-        </div>
-      </div>
+        </Column>
+      </Grid>
     );
   }
 }

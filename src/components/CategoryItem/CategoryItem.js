@@ -6,7 +6,7 @@ function CategoryItem({ name, click }) {
     <div className="category item">
       <div className="content" onClick={click}>
         <div className="header">
-          <h4>{name && name}</h4>
+          <h3>{name && name}</h3>
         </div>
       </div>
     </div>
