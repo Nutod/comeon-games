@@ -1,12 +1,10 @@
 import React from "react";
-import Logo from "../components/assets/images/logo.svg";
+import Header from "./Header";
 
 export default function Home() {
   return (
-    <div class="ui one column center aligned page grid">
-      <div class="column twelve wide">
-        <img src={Logo} alt="logo" />
-      </div>
-    </div>
+    <>
+      <Header />
+    </>
   );
 }
