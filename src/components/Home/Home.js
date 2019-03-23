@@ -59,6 +59,7 @@ export default class Home extends Component {
 
   // TODO: Add svg loading animation
   render() {
+    console.log(this.props);
     return (
       <>
         <Header />
@@ -69,7 +70,10 @@ export default class Home extends Component {
                 <div className="ui list">
                   <PlayerItem />
                 </div>
-                <div className="logout ui left floated secondary button inverted">
+                <div
+                  className="logout ui left floated secondary button inverted"
+                  onClick={() => this.props.history.replace("/logout")}
+                >
                   <i className="left chevron icon" />
                   Log Out
                 </div>
