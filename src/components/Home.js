@@ -1,26 +1,26 @@
 import React from "react";
 import Header from "./Header";
+import PlayerItem from "./PlayerItem";
+import styled from "styled-components";
+
+const MainContainer = styled.div`
+  background-color: #ffffff;
+  margin: 0 auto;
+  padding: 2em 2em 7em;
+  max-width: 990px;
+`;
 
 export default function Home() {
   return (
     <>
       <Header />
-      <div className="main-container">
+      <MainContainer>
         <div class="casino">
           <div class="ui grid centered">
             <div class="twelve wide column">
               <div class="ui list">
                 {/* player item template  */}
-                <div class="player item">
-                  <img class="ui avatar image" src="" alt="avatar" />
-
-                  <div class="content">
-                    <div class="header">
-                      <b class="name" />
-                    </div>
-                    <div class="description event" />
-                  </div>
-                </div>
+                <PlayerItem />
                 {/* <!-- end player item template --> */}
               </div>
               <div class="logout ui left floated secondary button inverted">
@@ -90,7 +90,7 @@ export default function Home() {
             <div class="three wide column" />
           </div>
         </div>
-      </div>
+      </MainContainer>
     </>
   );
 }
