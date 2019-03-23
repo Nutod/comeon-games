@@ -17,7 +17,6 @@ export default class Home extends Component {
   state = {
     games: null,
     categories: null,
-    filteredGames: null,
     error: null,
     searchString: ""
   };
@@ -36,36 +35,26 @@ export default class Home extends Component {
       )
     ).then(([games, categories]) => {
       this.setState({ games, categories });
+      localStorage.setItem("games", JSON.stringify(this.state.games));
     });
-
-    localStorage.setItem("games", JSON.stringify(this.state.games));
-  };
-
-  getAllGames = async () => {
-    const response = await fetch("http://localhost:3001/games");
-    const games = await response.json();
-    this.setState(() => ({ games }));
   };
 
   filterGames = (_, id) => {
-    const games = [...this.state.games];
-    if (id === 0 && games.length <= 1) {
-      this.getAllGames();
-    } else {
-      const newGames = games.filter(game => {
-        return game.categoryIds.includes(id);
-      });
-      this.setState(() => ({ games: newGames }));
-    }
+    const games = JSON.parse(localStorage.getItem("games"));
+    const newGames = games.filter(game => game.categoryIds.includes(id));
+    this.setState({ games: newGames });
   };
 
   // TODO: Debounce this method
-  searchGames = ({ target }) => {
+  searchHandler = ({ target }) => {
+    const games = JSON.parse(localStorage.getItem("games"));
     this.setState(() => ({ searchString: target.value }));
-    const filteredGames = this.state.games.filter(game =>
-      game.name.toLowerCase().includes(this.state.searchString.toLowerCase())
+    const newGames = games.filter(game =>
+      game.name
+        .toLowerCase()
+        .includes(this.state.searchString.toLowerCase().trim())
     );
-    this.setState(() => ({ filteredGames }));
+    this.setState({ games: newGames });
   };
 
   // TODO: Add svg loading animation
@@ -87,7 +76,7 @@ export default class Home extends Component {
               </div>
               <Search
                 searchValue={this.state.searchString}
-                changed={this.searchGames}
+                changed={this.searchHandler}
               />
             </div>
             <div className="ui grid">
