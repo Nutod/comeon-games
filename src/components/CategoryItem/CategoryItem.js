@@ -6,7 +6,7 @@ export default function CategoryItem({ name }) {
     <div className="category item">
       <div className="content">
         <div className="header">
-          <h4>{name && name.toUpperCase()}</h4>
+          <h4>{name && name}</h4>
         </div>
       </div>
     </div>

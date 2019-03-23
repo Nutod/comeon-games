@@ -14,6 +14,13 @@ const MainContainer = styled.div`
   max-width: 990px;
 `;
 
+const HeaderWrapper = styled.div`
+  @media only screen and (max-width: 500px) {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+`;
+
 export default class Home extends Component {
   state = {
     games: null,
@@ -30,7 +37,7 @@ export default class Home extends Component {
         <Header />
         <MainContainer>
           <div className="casino">
-            <div className="ui grid centered">
+            <HeaderWrapper className="ui grid centered">
               <div className="twelve wide column">
                 <div className="ui list">
                   <PlayerItem />
@@ -41,8 +48,8 @@ export default class Home extends Component {
                 </div>
               </div>
               <Search />
-            </div>
-            <div className="ui grid">
+            </HeaderWrapper>
+            <div className="u grid">
               <div className="twelve wide column">
                 <h3 className="ui dividing header">Games</h3>
                 <div className="ui relaxed divided game items links">
