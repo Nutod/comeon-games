@@ -1,23 +1,17 @@
 import React from "react";
-import GameIcon from "../../components/assets/images/game-icon/starburst.jpg";
 
-export default function GameItem() {
+export default function GameItem({ name, description, icon }) {
   return (
     <div className="game item">
       <div className="ui small image">
-        <img src={GameIcon} alt="game-icon" />
+        <img src={icon} alt="game-icon" />
       </div>
       <div className="content">
         <div className="header">
-          <b className="name">Starburst</b>
+          <b className="name">{name}</b>
         </div>
         <div className="description">
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure,
-            eligendi voluptatibus reiciendis consequuntur, ipsa rem alias
-            cupiditate accusantium necessitatibus laborum quia unde, id
-            distinctio aliquam magnam quae recusandae numquam sapiente!
-          </p>
+          <p>{description}</p>
         </div>
         <div className="extra">
           <div className="play ui right floated secondary button inverted">

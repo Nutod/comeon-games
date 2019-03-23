@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function CategoryItem({ header }) {
+export default function CategoryItem({ name }) {
   return (
     <div className="category item">
       <div className="content">
         <div className="header">
-          <h4>{header.toUpperCase()}</h4>
+          <h4>{name && name.toUpperCase()}</h4>
         </div>
       </div>
     </div>
@@ -14,5 +14,5 @@ export default function CategoryItem({ header }) {
 }
 
 CategoryItem.propTypes = {
-  header: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired
 };

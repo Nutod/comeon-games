@@ -5,6 +5,7 @@ import PlayerItem from "../PlayerItem/PlayerItem";
 import Search from "../Search/Search";
 import GameItem from "../GameItem/GameItem";
 import CategoryItem from "../CategoryItem/CategoryItem";
+import data from "../../lib/mock/mock-data.json";
 
 const MainContainer = styled.div`
   background-color: #ffffff;
@@ -14,9 +15,18 @@ const MainContainer = styled.div`
 `;
 
 export default class Home extends Component {
-  state = {};
+  state = {
+    games: null,
+    categories: null
+  };
+
+  componentDidMount = () => {
+    this.setState({ games: data.games, categories: data.categories });
+  };
 
   render() {
+    console.log(data);
+
     return (
       <>
         <Header />
@@ -39,10 +49,18 @@ export default class Home extends Component {
                 <h3 className="ui dividing header">Games</h3>
 
                 <div className="ui relaxed divided game items links">
-                  <GameItem />
-                  <GameItem />
-                  <GameItem />
-                  <GameItem />
+                  {this.state.games ? (
+                    this.state.games.map(({ name, description, icon }) => (
+                      <GameItem
+                        key={name}
+                        name={name}
+                        description={description}
+                        icon={icon}
+                      />
+                    ))
+                  ) : (
+                    <p>Loading...</p>
+                  )}
                 </div>
               </div>
               <div className="four wide column">
