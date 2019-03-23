@@ -1,27 +1,47 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
-export default class Login extends Component {
+class Login extends Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    errors: []
   };
 
   handleSubmit = event => {
     event.preventDefault();
 
-    fetch("http://localhost:3001/login", {
-      method: "post",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password
+    // TODO: Add LocalStorage here
+    this.isFormValid() &&
+      fetch("http://localhost:3001/login", {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: this.state.username,
+          password: this.state.password
+        })
       })
-    })
-      .then(response => response.json())
-      .then(data => console.log(data));
+        .then(response => response.json())
+        .then(data => this.props.history.replace("/"));
+  };
+
+  isFormValid = () => {
+    let errors = [];
+    let error;
+    if (this.isFormEmpty(this.state)) {
+      error = { message: "Fill in all fields" };
+      this.setState({ errors: errors.concat(error) });
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  isFormEmpty = ({ username, password }) => {
+    return !username.length || !password.length;
   };
 
   inputChangeHandler = ({ target }) => {
@@ -66,8 +86,13 @@ export default class Login extends Component {
               </div>
             </div>
           </form>
+          {this.state.errors.length > 0 && (
+            <h3 style={{ color: "#fff" }}>Something went wrong</h3>
+          )}
         </div>
       </div>
     );
   }
 }
+
+export default withRouter(Login);

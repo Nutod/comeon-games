@@ -37,6 +37,8 @@ export default class Home extends Component {
     ).then(([games, categories]) => {
       this.setState({ games, categories });
     });
+
+    localStorage.setItem("games", JSON.stringify(this.state.games));
   };
 
   getAllGames = async () => {
