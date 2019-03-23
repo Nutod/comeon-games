@@ -37,6 +37,7 @@ export default class Home extends Component {
     });
   };
 
+  // TODO: Add svg loading animation
   render() {
     return (
       <>
