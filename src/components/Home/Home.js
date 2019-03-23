@@ -5,7 +5,6 @@ import PlayerItem from "../PlayerItem/PlayerItem";
 import Search from "../Search/Search";
 import GameItem from "../GameItem/GameItem";
 import CategoryItem from "../CategoryItem/CategoryItem";
-import data from "../../lib/mock/mock-data.json";
 
 const MainContainer = styled.div`
   background-color: #ffffff;
@@ -20,8 +19,10 @@ export default class Home extends Component {
     categories: null
   };
 
-  componentDidMount = () => {
-    this.setState({ games: data.games, categories: data.categories });
+  componentDidMount = async () => {
+    const response = await fetch("http://localhost:3001/games");
+    const games = await response.json();
+    this.setState({ games });
   };
 
   render() {
