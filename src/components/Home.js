@@ -19,19 +19,11 @@ export default function Home() {
           <div class="ui grid centered">
             <div class="twelve wide column">
               <div class="ui list">
-                {/* player item template  */}
                 <PlayerItem />
-                {/* <!-- end player item template --> */}
               </div>
               <div class="logout ui left floated secondary button inverted">
                 <i class="left chevron icon" />
                 Log Out
-              </div>
-            </div>
-            <div class="four wide column">
-              <div class="search ui small icon input ">
-                <input type="text" placeholder="Search Game" />
-                <i class="search icon" />
               </div>
             </div>
           </div>
