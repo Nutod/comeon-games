@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Redirect } from "react-router-dom";
 
-export default function Logout() {
-  return (
-    <div>
-      <h2>Logout</h2>
-    </div>
-  );
+function Logout() {
+  useEffect(() => {
+    localStorage.removeItem("username");
+  }, []);
+  return <Redirect to="/login" />;
 }
+
+export default Logout;
