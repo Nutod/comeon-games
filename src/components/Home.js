@@ -3,6 +3,7 @@ import Header from "./Header";
 import PlayerItem from "./PlayerItem";
 import styled from "styled-components";
 import Search from "./Search";
+import GameItem from "./GameItem";
 
 const MainContainer = styled.div`
   background-color: #ffffff;
@@ -34,9 +35,10 @@ export default function Home() {
               <h3 class="ui dividing header">Games</h3>
 
               <div class="ui relaxed divided game items links">
-                {/* <!-- game item template --> */}
-                Game Item
-                {/* <!-- end game item template --> */}
+                <GameItem />
+                <GameItem />
+                <GameItem />
+                <GameItem />
               </div>
             </div>
             <div class="four wide column">
@@ -46,7 +48,23 @@ export default function Home() {
                 {/* <!-- category item template --> */}
                 <div class="category item">
                   <div class="content">
-                    <div class="header" />
+                    <div class="header">
+                      <h4>All</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="category item">
+                  <div class="content">
+                    <div class="header">
+                      <h4>Video Slots</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="category item">
+                  <div class="content">
+                    <div class="header">
+                      <h4>Machine Slots</h4>
+                    </div>
                   </div>
                 </div>
                 {/* <!-- end category item template --> */}
