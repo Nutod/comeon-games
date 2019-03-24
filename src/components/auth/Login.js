@@ -69,7 +69,6 @@ class Login extends Component {
           }
         })
         .catch(err => {
-          console.log("Cheating...");
           let errors = [];
           let error = { message: "User not Found" };
           this.setState({ errors: errors.concat(error) });
@@ -78,13 +77,11 @@ class Login extends Component {
   };
 
   isFormValid = () => {
-    console.log("Validating...");
     let errors = [];
     let error;
     if (this.isFormEmpty(this.state)) {
       error = { message: "Fill in all fields" };
       this.setState({ errors: errors.concat(error) });
-      console.log("Not Valid...");
       return false;
     } else {
       return true;
