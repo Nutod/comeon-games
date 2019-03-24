@@ -57,7 +57,6 @@ export default class Home extends Component {
     this.setState({ games: newGames });
   };
 
-  // TODO: Add svg loading animation
   render() {
     return (
       <>
