@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
+import Logo from "../assets/images/logo.svg";
 
 const Grid = styled.div`
   height: 100%;
@@ -22,12 +23,13 @@ class Login extends Component {
   state = {
     username: "",
     password: "",
-    errors: []
+    errors: [],
+    loading: false
   };
 
   handleSubmit = event => {
     event.preventDefault();
-
+    this.setState({ loading: true });
     this.isFormValid() &&
       fetch("http://localhost:3001/login", {
         method: "post",
@@ -41,10 +43,12 @@ class Login extends Component {
         })
       })
         .then(response => response.json())
-        .then(data => {
+        .then(({ player }) => {
           this.props.history.replace("/");
-          localStorage.setItem("username", data);
-        });
+          localStorage.setItem("username", player.name);
+        })
+        .catch(err => console.log("Cheating..."));
+    this.setState({ loading: false });
   };
 
   isFormValid = () => {
@@ -73,9 +77,8 @@ class Login extends Component {
     return (
       <Grid className="ui middle aligned center aligned">
         <Column>
-          <h2 className="ui image header">
-            <img src="assets/images/logo.png" alt="Logo" className="image" />
-          </h2>
+          <img src={Logo} alt="Logo" className="image" />
+
           <form className="ui large form" onSubmit={this.handleSubmit}>
             <div className="ui stacked segment">
               <div className="required field">
@@ -104,8 +107,9 @@ class Login extends Component {
               </div>
               <input
                 type="submit"
-                value="Login"
+                value={this.state.loading ? "" : "Login"}
                 className="ui fluid large submit button"
+                disabled={this.state.loading}
               />
             </div>
 

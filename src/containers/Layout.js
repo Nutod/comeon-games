@@ -1,5 +1,5 @@
 import React, { Component, Suspense, lazy } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Home from "../components/Home/Home";
 
 const Login = lazy(() => {
@@ -21,32 +21,24 @@ export default class Layout extends Component {
   };
 
   render() {
-    // let routes = null;
-    // if (!this.state.authState) {
-    //   routes = (
-    //     <>
-    //       <Route path="/login" render={() => <Login />} />
-    //       <Redirect to="/login" />
-    //     </>
-    //   );
-    // } else {
-    //   routes = (
-    //     <>
-    //       <Route exact path="/" component={Home} />
-    //       <Route path="/login" render={() => <Login />} />
-    //       <Route path="/logout" render={() => <Logout />} />
-    //     </>
-    //   );
-    // }
-
-    return (
-      <Switch>
-        <Suspense fallback={() => <p>Loading...</p>}>
+    let routes = null;
+    if (!this.state.authState) {
+      routes = (
+        <Switch>
+          <Route path="/login" render={() => <Login />} />
+          <Redirect to="/login" />
+        </Switch>
+      );
+    } else {
+      routes = (
+        <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" render={() => <Login />} />
           <Route path="/logout" render={() => <Logout />} />
-        </Suspense>
-      </Switch>
-    );
+        </Switch>
+      );
+    }
+
+    return <Suspense fallback={() => <p>Loading...</p>}>{routes}</Suspense>;
   }
 }
