@@ -17,6 +17,7 @@ const Column = styled.div`
 const Error = styled.div`
   color: #9f3a38 !important;
   border-color: #9f3a38 !important;
+  text-align: center !important;
 `;
 
 class Login extends Component {
@@ -32,8 +33,8 @@ class Login extends Component {
   };
 
   handleSubmit = event => {
-    event.preventDefault();
     this.setState({ loading: true });
+    event.preventDefault();
     this.isFormValid() &&
       fetch("http://localhost:3001/login", {
         method: "post",
@@ -67,7 +68,12 @@ class Login extends Component {
             this.setState({ errors: errors.concat(error) });
           }
         })
-        .catch(err => console.log("Cheating..."));
+        .catch(err => {
+          console.log("Cheating...");
+          let errors = [];
+          let error = { message: "User not Found" };
+          this.setState({ errors: errors.concat(error) });
+        });
     this.setState({ loading: false });
   };
 
@@ -99,7 +105,11 @@ class Login extends Component {
         <Column>
           <img src={Logo} alt="Logo" className="image" />
 
-          <form className="ui large form" onSubmit={this.handleSubmit}>
+          <form
+            className="ui large form"
+            onSubmit={this.handleSubmit}
+            aria-busy={this.state.loading}
+          >
             <div className="ui stacked segment">
               <div className="required field">
                 <div className="ui icon input">
@@ -109,6 +119,7 @@ class Login extends Component {
                     value={this.state.username}
                     onChange={this.inputChangeHandler}
                     placeholder="Username"
+                    disabled={this.state.loading}
                   />
                   <i className="user icon" />
                 </div>
@@ -121,13 +132,14 @@ class Login extends Component {
                     value={this.state.password}
                     onChange={this.inputChangeHandler}
                     placeholder="Password"
+                    disabled={this.state.loading}
                   />
                   <i className="lock icon" />
                 </div>
               </div>
               <input
                 type="submit"
-                value={this.state.loading ? "" : "Login"}
+                value={this.state.loading ? "Please wait..." : "Login"}
                 className="ui fluid large submit button"
                 disabled={this.state.loading}
               />
