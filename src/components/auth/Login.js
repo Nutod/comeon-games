@@ -11,7 +11,7 @@ const Grid = styled.div`
 const Column = styled.div`
   max-width: 450px;
   margin: 0 auto;
-  padding-top: 15%;
+  padding-top: 15rem;
 `;
 
 const Error = styled.div`
