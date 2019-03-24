@@ -15,14 +15,18 @@ const Game = lazy(() => {
 });
 
 export default class Layout extends Component {
-  state = {
-    authState: null
-  };
-
-  UNSAFE_componentWillMount = () => {
+  constructor(props) {
+    super(props);
     const user = localStorage.getItem("username");
-    this.setState({ authState: user !== null });
-  };
+    this.state = {
+      authState: user !== null
+    };
+  }
+
+  // UNSAFE_componentWillMount = () => {
+  //   const user = localStorage.getItem("username");
+  //   this.setState({ authState: user !== null });
+  // };
 
   render() {
     let routes = null;
