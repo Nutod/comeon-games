@@ -27,6 +27,10 @@ class Login extends Component {
     loading: false
   };
 
+  componentDidMount = () => {
+    console.log(window.comeon);
+  };
+
   handleSubmit = event => {
     event.preventDefault();
     this.setState({ loading: true });
