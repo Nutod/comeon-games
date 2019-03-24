@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CategoryItem /> Snapshot Should match snapshot 1`] = `
+<div
+  className="category item"
+>
+  <div
+    className="content"
+  >
+    <div
+      className="header"
+    >
+      <h4 />
+    </div>
+  </div>
+</div>
+`;
