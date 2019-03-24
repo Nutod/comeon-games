@@ -12,29 +12,29 @@ const Logout = lazy(() => {
 
 export default class Layout extends Component {
   state = {
-    authState: false
+    authState: null
   };
 
-  componentDidMount = () => {
+  UNSAFE_componentWillMount = () => {
     const user = localStorage.getItem("username");
     this.setState({ authState: user !== null });
   };
 
   render() {
     let routes = null;
-    if (!this.state.authState) {
-      routes = (
-        <Switch>
-          <Route path="/login" render={() => <Login />} />
-          <Redirect to="/login" />
-        </Switch>
-      );
-    } else {
+    if (this.state.authState) {
       routes = (
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" render={() => <Login />} />
           <Route path="/logout" render={() => <Logout />} />
+        </Switch>
+      );
+    } else {
+      routes = (
+        <Switch>
+          <Route path="/login" render={() => <Login />} />
+          <Redirect to="/login" />
         </Switch>
       );
     }

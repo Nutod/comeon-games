@@ -2,6 +2,10 @@ import React, { memo } from "react";
 import PropTypes from "prop-types";
 
 function GameItem({ name, description, icon, code }) {
+  const runGame = (_, name) => {
+    window.comeon.game.launch(name);
+  };
+
   return (
     <div className="game item">
       <div className="ui small image">
@@ -15,7 +19,10 @@ function GameItem({ name, description, icon, code }) {
           <p>{description}</p>
         </div>
         <div className="extra">
-          <div className="play ui right floated secondary button inverted">
+          <div
+            className="play ui right floated secondary button inverted"
+            onClick={_ => runGame(_, code)}
+          >
             Play
             <i className="right chevron icon" />
           </div>
