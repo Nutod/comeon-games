@@ -23,11 +23,6 @@ export default class Layout extends Component {
     };
   }
 
-  // UNSAFE_componentWillMount = () => {
-  //   const user = localStorage.getItem("username");
-  //   this.setState({ authState: user !== null });
-  // };
-
   render() {
     let routes = null;
     if (this.state.authState) {
