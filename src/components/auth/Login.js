@@ -27,6 +27,8 @@ class Login extends Component {
     loading: false
   };
 
+  // TODO: Check status code
+
   handleSubmit = event => {
     event.preventDefault();
     this.setState({ loading: true });
@@ -42,10 +44,26 @@ class Login extends Component {
           password: this.state.password
         })
       })
-        .then(response => response.json())
-        .then(({ player }) => {
-          this.props.history.replace("/");
-          localStorage.setItem("username", player.name);
+        .then(response => {
+          if (response.ok) {
+            return response;
+          } else {
+            throw new Error(response.statusText);
+          }
+        })
+        .then(res => res.json())
+        .then(({ status, player }) => {
+          console.log(status);
+          if (status === "success") {
+            this.props.history.replace("/");
+            localStorage.setItem("username", player.name);
+            localStorage.setItem("avatar", player.avatar);
+            localStorage.setItem("event", player.event);
+          } else {
+            let errors = [];
+            let error = { message: "User not Found" };
+            this.setState({ errors: errors.concat(error) });
+          }
         })
         .catch(err => console.log("Cheating..."));
     this.setState({ loading: false });
@@ -116,7 +134,9 @@ class Login extends Component {
             {this.state.errors.length > 0 && (
               <Error className="ui message">
                 <h3>Something went wrong!</h3>
-                <p>{this.state.errors[0].message}</p>
+                {this.state.errors.map(err => (
+                  <p key={err.message}>{err.message}</p>
+                ))}
               </Error>
             )}
           </form>

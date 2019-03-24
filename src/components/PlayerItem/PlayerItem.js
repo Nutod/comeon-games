@@ -1,20 +1,35 @@
-import React, { memo } from "react";
-import Avatar from "../../components/assets/images/avatar/eric.jpg";
+import React, { Component } from "react";
 
-function PlayerItem() {
-  return (
-    <div className="player item">
-      <img className="ui avatar image" src={Avatar} alt="avatar" />
-      <div className="content">
-        <div className="header">
-          <b className="name">Eric Beard</b>
-        </div>
-        <div className="description event">
-          <p>I saw you won 500 SEK last time!</p>
+export default class PlayerItem extends Component {
+  state = {
+    avatar: "",
+    name: "",
+    event: ""
+  };
+
+  componentDidMount = () => {
+    const avatar = localStorage.getItem("avatar");
+    const name = localStorage.getItem("username");
+    const event = localStorage.getItem("event");
+
+    this.setState({ avatar, name, event });
+  };
+
+  render() {
+    const { name, avatar, event } = this.state;
+
+    return (
+      <div className="player item">
+        <img className="ui avatar image" src={avatar} alt="avatar" />
+        <div className="content">
+          <div className="header">
+            <b className="name">{name}</b>
+          </div>
+          <div className="description event">
+            <p>{event}</p>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
-
-export default memo(PlayerItem);
