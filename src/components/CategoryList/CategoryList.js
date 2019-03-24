@@ -1,5 +1,5 @@
 import React from "react";
-// import {} from 'react-content-loader'
+import { BulletList } from "react-content-loader";
 import CategoryItem from "../CategoryItem/CategoryItem";
 
 export default function CategoryList({ categories, filter }) {
@@ -16,7 +16,7 @@ export default function CategoryList({ categories, filter }) {
             />
           ))
         ) : (
-          <p>Loading...</p>
+          <BulletList />
         )}
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Code } from "react-content-loader";
 import GameItem from "../GameItem/GameItem";
 
 export default function GameList({ games }) {
@@ -17,7 +18,9 @@ export default function GameList({ games }) {
             />
           ))
         ) : (
-          <p>Loading...</p>
+          <>
+            <Code /> <Code /> <Code />
+          </>
         )}
       </div>
     </div>
