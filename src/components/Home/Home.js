@@ -6,7 +6,7 @@ import Search from "../Search/Search";
 import GameList from "../GameList/GameList";
 import CategoryList from "../CategoryList/CategoryList";
 
-const MainContainer = styled.div`
+export const MainContainer = styled.div`
   background-color: #ffffff;
   margin: 0 auto;
   padding: 2em 2em 7em;

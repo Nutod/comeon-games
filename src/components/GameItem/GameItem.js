@@ -1,11 +1,8 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 function GameItem({ name, description, icon, code }) {
-  const runGame = (_, name) => {
-    window.comeon.game.launch(name);
-  };
-
   return (
     <div className="game item">
       <div className="ui small image">
@@ -19,13 +16,16 @@ function GameItem({ name, description, icon, code }) {
           <p>{description}</p>
         </div>
         <div className="extra">
-          <div
-            className="play ui right floated secondary button inverted"
-            onClick={_ => runGame(_, code)}
+          <Link
+            to={{
+              pathname: `/${code}`
+            }}
           >
-            Play
-            <i className="right chevron icon" />
-          </div>
+            <div className="play ui right floated secondary button inverted">
+              Play
+              <i className="right chevron icon" />
+            </div>
+          </Link>
         </div>
       </div>
     </div>

@@ -10,6 +10,10 @@ const Logout = lazy(() => {
   return import("../components/auth/Logout");
 });
 
+const Game = lazy(() => {
+  return import("../components/Game/Game");
+});
+
 export default class Layout extends Component {
   state = {
     authState: null
@@ -28,6 +32,7 @@ export default class Layout extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/login" render={() => <Login />} />
           <Route path="/logout" render={() => <Logout />} />
+          <Route path="/:gameId" render={() => <Game />} />
         </Switch>
       );
     } else {
