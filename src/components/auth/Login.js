@@ -27,8 +27,6 @@ class Login extends Component {
     loading: false
   };
 
-  // TODO: Check status code
-
   handleSubmit = event => {
     event.preventDefault();
     this.setState({ loading: true });
